@@ -56,5 +56,5 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (0);
-	return (tree_leaves(tree) == power(2, tree_height(tree) - 1) ? 1 : 0);
+	return ((tree_leaves(tree) == power(2, tree_height(tree) - 1)) ? 1 : 0);
 }
