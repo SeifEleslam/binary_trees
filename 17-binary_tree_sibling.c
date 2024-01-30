@@ -5,7 +5,7 @@
  * @node: tree to map
  * Return: true if leaf
  */
-int binary_tree_sibling(const binary_tree_t *node)
+binary_tree_t *binary_tree_sibling(const binary_tree_t *node)
 {
 	if (!node || !node->parent)
 		return (NULL);
