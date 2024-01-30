@@ -50,8 +50,8 @@ int main(void)
     root->right->right->right = binary_tree_node(root->right->right, 65);
     // binary_tree_print(root);
 
-    // launch_test(root->left, root->right);
+    launch_test(root->left, root->right);
     launch_test(root->right->left, root->right->right->right);
-    // launch_test(root->right->right, root->right->right->right);
+    launch_test(root->right->right, root->right->right->right);
     return (0);
 }

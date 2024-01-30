@@ -27,11 +27,9 @@ int is_child(const binary_tree_t *parent, const binary_tree_t *child)
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 									 const binary_tree_t *second)
 {
-	if (!first || !second || !first->parent || !second->parent)
+	if (!first || !second)
 		return (NULL);
-	return (is_child(first->parent, second)
-				? first->parent
-			: is_child(second->parent, first)
-				? second->parent
-				: binary_trees_ancestor(first->parent, second));
+	if (is_child(first, second) || first == second)
+		return ((binary_tree_t *)first);
+	return (binary_trees_ancestor(first->parent, second));
 }
