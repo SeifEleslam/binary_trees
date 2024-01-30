@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["inorder"]
+  "cSpell.words": ["inorder"],
+  "files.associations": {
+    "math.h": "c"
+  }
 }
