@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_sibling - check if leaf
+ * binary_tree_uncle - check if leaf
  * @node: tree to map
  * Return: true if leaf
  */
