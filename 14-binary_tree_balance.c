@@ -1,6 +1,23 @@
 #include "binary_trees.h"
 
 /**
+ * subtree_height - check if leaf
+ * @tree: tree to map
+ * Return: true if leaf
+ */
+size_t subtree_height(const binary_tree_t *tree)
+{
+	size_t left_height, right_height;
+
+	if (!tree)
+		return (0);
+
+	left_height = binary_tree_height(tree->left);
+	right_height = binary_tree_height(tree->right);
+	return (1 + MAX(left_height, right_height));
+}
+
+/**
  * binary_tree_balance - check if leaf
  * @tree: tree to map
  * Return: true if leaf
@@ -8,14 +25,8 @@
 
 int binary_tree_balance(const binary_tree_t *tree)
 {
-	int addition = 0;
 
 	if (!tree)
 		return (0);
-	addition += tree->left ? 1 : 0;
-	addition -= tree->right ? 1 : 0;
-
-	return (addition +
-			abs(binary_tree_balance(tree->left)) -
-			abs(binary_tree_balance(tree->right)));
+	return (subtree_height(tree->left) - subtree_height(tree->right));
 }
