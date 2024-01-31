@@ -3,6 +3,7 @@
 /**
  * tree_is_complete - check if leaf
  * @tree: tree to map
+ * @level: tree to map
  * @min: func to run
  * @max: func to run
  * Return: num of nodes
@@ -10,6 +11,7 @@
 int tree_is_complete(const binary_tree_t *tree, int level, int *min, int *max)
 {
 	int left, right;
+
 	if (!tree)
 		return (0);
 	if (!tree->left && !tree->right)
@@ -51,5 +53,5 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 
 	if (!tree)
 		return (0);
-	return tree_is_complete(tree, 0, &min_level, &max_level);
+	return (tree_is_complete(tree, 0, &min_level, &max_level));
 }
