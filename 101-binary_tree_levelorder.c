@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_levelorder - check if leaf
+ * binary_tree_level - check if leaf
  * @tree: tree to map
  * @func: func to run
  * @level: func to run
@@ -10,7 +10,7 @@
 int binary_tree_level(const binary_tree_t *tree, void (*func)(int), int level)
 {
 	if (!tree || !func)
-		return 0;
+		return (0);
 	if (level == 0)
 	{
 		func(tree->n);
