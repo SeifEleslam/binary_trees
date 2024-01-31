@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_level - check if leaf
+ * tree_is_complete - check if leaf
  * @tree: tree to map
  * @min: func to run
  * @max: func to run
@@ -13,6 +13,7 @@ int tree_is_complete(const binary_tree_t *tree, int level, int *min, int *max)
 	if (!tree)
 		return (0);
 	if (!tree->left && !tree->right)
+	{
 		if (*max == -1 || *min == -1)
 		{
 			*max = level, *min = level - 1;
@@ -20,23 +21,22 @@ int tree_is_complete(const binary_tree_t *tree, int level, int *min, int *max)
 		}
 		else if (level < *min || level > *max)
 			return (0);
-		else
-		{
-			*max = level;
-			return (1);
-		}
-	left = tree_is_complete(tree->left, level + 1, min, max);
-	right = tree_is_complete(tree->right, level + 1, min, max);
+		*max = level;
+		return (1);
+	}
 	if (!tree->left)
 		return (0);
+	left = tree_is_complete(tree->left, level + 1, min, max);
+	right = tree_is_complete(tree->right, level + 1, min, max);
 	if (!tree->right)
+	{
 		if (level >= *min && level <= *max)
 		{
 			*max = level;
 			return ((!tree->left ? right : left));
 		}
-		else
-			return (0);
+		return (0);
+	}
 	return (left && right ? 1 : 0);
 }
 
