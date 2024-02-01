@@ -8,8 +8,6 @@
  */
 bst_t *bst_new(bst_t *tree, int value)
 {
-	binary_tree_t *node;
-
 	if (tree->n > value)
 	{
 		if (tree->left)
