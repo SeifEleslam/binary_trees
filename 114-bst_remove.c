@@ -1,19 +1,6 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_del - delete tree
- * @tree: root node of the tree
- */
-void binary_tree_del(binary_tree_t *tree)
-{
-	if (!tree)
-		return;
-	binary_tree_del(tree->left);
-	binary_tree_del(tree->right);
-	free(tree);
-}
-
-/**
  * del_search - check if leaf
  * @tree: tree to map
  * @value: tree to map
@@ -124,10 +111,10 @@ bst_t *bst_remove(bst_t *root, int value)
 				node->parent->left = NULL;
 			else
 				node->parent->right = NULL;
-			binary_tree_del(node);
+			free(node);
 			return (root);
 		}
-		binary_tree_del(node);
+		free(node);
 		return (NULL);
 	}
 	rep_node(node, rep);
