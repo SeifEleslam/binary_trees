@@ -1,6 +1,19 @@
 #include "binary_trees.h"
 
 /**
+ * binary_tree_del - delete tree
+ * @tree: root node of the tree
+ */
+void binary_tree_del(binary_tree_t *tree)
+{
+	if (!tree)
+		return;
+	binary_tree_del(tree->left);
+	binary_tree_del(tree->right);
+	free(tree);
+}
+
+/**
  * del_search - check if leaf
  * @tree: tree to map
  * @value: tree to map
@@ -57,31 +70,34 @@ void rep_node(bst_t *node, bst_t *rep)
 	if (rep->left)
 	{
 		if (rep->parent->right == rep)
-		{
-			rep->parent->right = rep->left;
-			rep->left->parent = rep->parent;
-		}
+			rep->parent->right = rep->left, rep->left->parent = rep->parent;
 		else
-		{
-			rep->parent->left = rep->left;
-			rep->left->parent = rep->parent;
-		}
+			rep->parent->left = rep->left, rep->left->parent = rep->parent;
 	}
 	if (rep->right)
 	{
 		if (rep->parent->right == rep)
-		{
-			rep->parent->right = rep->right;
-			rep->right->parent = rep->parent;
-		}
+			rep->parent->right = rep->right, rep->right->parent = rep->parent;
 		else
-		{
-			rep->parent->left = rep->right;
-			rep->right->parent = rep->parent;
-		}
+			rep->parent->left = rep->right, rep->right->parent = rep->parent;
 	}
 	node->n = rep->n;
 	free(rep);
+	// rep->parent = node->parent;
+	// rep->left = node->left;
+	// rep->right = node->right;
+	// if (rep->parent)
+	// {
+	// 	if (rep->parent->left == node)
+	// 		rep->parent->left = rep;
+	// 	else
+	// 		rep->parent->right = rep;
+	// }
+	// if (rep->left)
+	// 	rep->left->parent = rep;
+	// if (rep->right)
+	// 	rep->right->parent = rep;
+	// free(node);
 }
 
 /**
@@ -108,12 +124,14 @@ bst_t *bst_remove(bst_t *root, int value)
 				node->parent->left = NULL;
 			else
 				node->parent->right = NULL;
-			binary_tree_delete(node);
+			binary_tree_del(node);
 			return (root);
 		}
-		binary_tree_delete(node);
+		binary_tree_del(node);
 		return (NULL);
 	}
 	rep_node(node, rep);
+	// if (!rep->parent)
+	// 	return (rep);
 	return (root);
 }
