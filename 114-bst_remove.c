@@ -45,7 +45,7 @@ bst_t *bst_rep(bst_t *tree)
  * @node: tree to map
  * @rep: tree to map
  */
-void *rep_node(bst_t *node, bst_t *rep)
+void rep_node(bst_t *node, bst_t *rep)
 {
 	if (!rep->left && !rep->right)
 	{
