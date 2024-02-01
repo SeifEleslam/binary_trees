@@ -24,7 +24,7 @@ avl_t *avl_new(avl_t *tree, int value)
 }
 
 /**
- * binary_tree_is_avl - check if leaf
+ * avl_rotate - check if leaf
  * @tree: tree to map
  */
 void avl_rotate(avl_t *tree)
@@ -42,8 +42,9 @@ void avl_rotate(avl_t *tree)
 }
 
 /**
- * binary_tree_is_avl - check if leaf
+ * avl_insert - check if leaf
  * @tree: tree to map
+ * @value: tree to map
  * Return: int
  */
 avl_t *avl_insert(avl_t **tree, int value)
@@ -61,7 +62,5 @@ avl_t *avl_insert(avl_t **tree, int value)
 	if (node->parent && abs(binary_tree_balance(node->parent)) > 0 &&
 		node->parent->parent && abs(binary_tree_balance(node->parent->parent)) > 1)
 		avl_rotate(node->parent->parent);
-	while ((*tree)->parent)
-		(*tree) = (*tree)->parent;
-	return (*tree);
+	return (node);
 }
