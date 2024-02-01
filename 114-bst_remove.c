@@ -57,16 +57,28 @@ void rep_node(bst_t *node, bst_t *rep)
 	if (rep->left)
 	{
 		if (rep->parent->right == rep)
-			rep->parent->right = rep->left, rep->left->parent = rep->parent;
+		{
+			rep->parent->right = rep->left;
+			rep->left->parent = rep->parent;
+		}
 		else
-			rep->parent->left = rep->left, rep->left->parent = rep->parent;
+		{
+			rep->parent->left = rep->left;
+			rep->left->parent = rep->parent;
+		}
 	}
 	if (rep->right)
 	{
 		if (rep->parent->right == rep)
-			rep->parent->right = rep->right, rep->right->parent = rep->parent;
+		{
+			rep->parent->right = rep->right;
+			rep->right->parent = rep->parent;
+		}
 		else
-			rep->parent->left = rep->right, rep->right->parent = rep->parent;
+		{
+			rep->parent->left = rep->right;
+			rep->right->parent = rep->parent;
+		}
 	}
 	node->n = rep->n;
 	free(rep);
