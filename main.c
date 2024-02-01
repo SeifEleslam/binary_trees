@@ -170,5 +170,17 @@ int main(void)
     node = avl_insert(&root, 1450);
     printf("\nInserted: %d\n", node->n);
     binary_tree_print(root);
+    node = avl_insert(&root, 1);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 2);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 3);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
+    node = avl_insert(&root, 4);
+    printf("\nInserted: %d\n", node->n);
+    binary_tree_print(root);
     return (0);
 }

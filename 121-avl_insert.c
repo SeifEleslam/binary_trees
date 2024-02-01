@@ -29,11 +29,22 @@ avl_t *avl_new(avl_t *tree, int value)
  */
 void avl_rotate(avl_t *tree)
 {
-	if (tree->right && tree->right->right)
+	int right_bfactor, left_bfactor;
+
+	right_bfactor = abs(binary_tree_balance(tree->right));
+	left_bfactor = abs(binary_tree_balance(tree->left));
+	if (tree->right &&
+		right_bfactor >
+			left_bfactor &&
+		abs(binary_tree_balance(tree->right->right)) >
+			abs(binary_tree_balance(tree->right->left)))
 		binary_tree_rotate_left(tree);
-	else if (tree->left && tree->left->left)
+	else if (tree->left &&
+			 left_bfactor > right_bfactor &&
+			 abs(binary_tree_balance(tree->left->left)) >
+				 abs(binary_tree_balance(tree->left->right)))
 		binary_tree_rotate_right(tree);
-	else if (tree->right)
+	else if (right_bfactor > left_bfactor)
 		binary_tree_rotate_right(tree->right),
 			binary_tree_rotate_left(tree);
 	else
@@ -44,7 +55,6 @@ void avl_rotate(avl_t *tree)
 /**
  * balance_outer - check if leaf
  * @tree: tree to map
- * @value: tree to map
  * Return: int
  */
 avl_t *balance_outer(avl_t *tree)
@@ -53,14 +63,14 @@ avl_t *balance_outer(avl_t *tree)
 
 	if (!tree)
 		return (NULL);
-	if (abs(binary_tree_balance(tree)) > 1)
-		return (tree);
 	node = balance_outer(tree->left);
 	if (node)
-		return node;
+		return (node);
 	node = balance_outer(tree->right);
 	if (node)
-		return node;
+		return (node);
+	if (abs(binary_tree_balance(tree)) > 1)
+		return (tree);
 	return (NULL);
 }
 
@@ -86,6 +96,7 @@ avl_t *avl_insert(avl_t **tree, int value)
 		*tree = (*tree)->parent;
 	for (outer = balance_outer(*tree); outer; outer = balance_outer(*tree))
 	{
+		binary_tree_print(*tree);
 		avl_rotate(outer);
 		while ((*tree)->parent)
 			*tree = (*tree)->parent;
