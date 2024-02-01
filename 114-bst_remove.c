@@ -109,8 +109,11 @@ bst_t *bst_remove(bst_t *root, int value)
 				node->parent->left = NULL;
 			else
 				node->parent->right = NULL;
+			binary_tree_delete(node);
+			return (root);
 		}
 		binary_tree_delete(node);
+		return (NULL);
 	}
 	rep_node(node, rep);
 	if (!rep->parent)
