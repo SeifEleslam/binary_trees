@@ -9,7 +9,7 @@
 bst_t *bst_new(bst_t *tree, int value)
 {
 	if (tree->n == value)
-		return (tree);
+		return (NULL);
 	if (tree->n > value)
 	{
 		if (tree->left)
