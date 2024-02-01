@@ -45,11 +45,9 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 {
 	if (!tree)
 		return 0;
-	int sad = (abs(avl_height(tree->left)));
-	int das = (avl_height(tree->right));
 	return (is_bst(tree->left, tree->n, 1) &&
 					is_bst(tree->right, tree->n, 0) &&
-					abs(avl_height(tree->left) - avl_height(tree->right)) < 2 &&
+					abs((int)avl_height(tree->left) - (int)avl_height(tree->right)) < 2 &&
 					(!tree->left || binary_tree_is_avl(tree->left)) &&
 					(!tree->right || binary_tree_is_avl(tree->right))
 				? 1
