@@ -120,5 +120,5 @@ bst_t *bst_remove(bst_t *root, int value)
 	// rep_node(node, rep);
 	// // if (!rep->parent)
 	// // 	return (rep);
-	return (root);
+	return (value > 1 ? root : NULL);
 }
