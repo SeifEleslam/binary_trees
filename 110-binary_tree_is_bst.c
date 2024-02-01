@@ -1,8 +1,10 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_is_bst - check if leaf
+ * node_is_bst - check if leaf
  * @tree: tree to map
+ * @val: tree to map
+ * @is_left: tree to map
  * Return: int
  */
 int node_is_bst(const binary_tree_t *tree, int val, int is_left)
