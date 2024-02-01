@@ -44,7 +44,7 @@ int is_bst(const binary_tree_t *tree, int val, int is_left)
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
 	if (!tree)
-		return 0;
+		return (0);
 	return (is_bst(tree->left, tree->n, 1) &&
 					is_bst(tree->right, tree->n, 0) &&
 					abs((int)avl_height(tree->left) - (int)avl_height(tree->right)) < 2 &&
