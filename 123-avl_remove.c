@@ -101,7 +101,7 @@ avl_t *balance_outer2(avl_t *tree)
 }
 
 /**
- * bst_remove - check if leaf
+ * avl_remove - check if leaf
  * @root: tree to map
  * @value: tree to map
  * Return: int
@@ -124,7 +124,6 @@ avl_t *avl_remove(bst_t *root, int value)
 	else
 		for (rep = node->left; rep->right;)
 			rep = rep->right;
-
 	if (!rep)
 	{
 		if (node->parent)
