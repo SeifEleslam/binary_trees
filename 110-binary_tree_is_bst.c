@@ -11,11 +11,11 @@ int node_is_bst(const binary_tree_t *tree, int val, int is_left)
 {
 	if (!tree)
 		return (1);
-	return (node_is_bst(tree->left, val, is_left) &&
-					node_is_bst(tree->right, val, is_left) &&
-					((is_left && tree->n < val) || !is_left && tree->n > val)
-				? 1
-				: 0);
+	if (node_is_bst(tree->left, val, is_left) &&
+		node_is_bst(tree->right, val, is_left) &&
+		((is_left && tree->n < val) || !is_left && tree->n > val))
+		return (1);
+	return (0);
 }
 
 /**
@@ -32,8 +32,8 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 
 	left = !tree->left || binary_tree_is_bst(tree->left) ? 1 : 0;
 	right = !tree->right || binary_tree_is_bst(tree->right) ? 1 : 0;
-	return (node_is_bst(tree->left, tree->n, 1) &&
-					node_is_bst(tree->right, tree->n, 0) && left && right
-				? 1
-				: 0);
+	if (node_is_bst(tree->left, tree->n, 1) &&
+		node_is_bst(tree->right, tree->n, 0) && left && right)
+		return (1);
+	return (0);
 }
