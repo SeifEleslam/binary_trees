@@ -25,7 +25,7 @@ int node_is_bst(const binary_tree_t *tree, int val, int is_left)
  */
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
-	int is_bst = 1, left, right;
+	int left, right;
 
 	if (!tree)
 		return (0);
