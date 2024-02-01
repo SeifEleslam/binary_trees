@@ -96,7 +96,6 @@ avl_t *avl_insert(avl_t **tree, int value)
 		*tree = (*tree)->parent;
 	for (outer = balance_outer(*tree); outer; outer = balance_outer(*tree))
 	{
-		binary_tree_print(*tree);
 		avl_rotate(outer);
 		while ((*tree)->parent)
 			*tree = (*tree)->parent;
