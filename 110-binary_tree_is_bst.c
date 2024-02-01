@@ -13,7 +13,7 @@ int node_is_bst(const binary_tree_t *tree, int val, int is_left)
 		return (1);
 	if (node_is_bst(tree->left, val, is_left) &&
 		node_is_bst(tree->right, val, is_left) &&
-		((is_left && tree->n < val) || !is_left && tree->n > val))
+		((is_left && tree->n < val) || (!is_left && tree->n > val)))
 		return (1);
 	return (0);
 }
