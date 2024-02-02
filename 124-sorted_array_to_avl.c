@@ -37,6 +37,8 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	avl_t *root;
 	size_t nested_size;
 
+	if (!array || size == 0)
+		return (NULL);
 	nested_size = size / 2 + (size % 2 == 0 ? -1 : 0);
 	root = binary_tree_node(NULL, array[nested_size]);
 	insert(root, array, nested_size, 1);
