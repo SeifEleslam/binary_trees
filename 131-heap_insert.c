@@ -80,7 +80,7 @@ heap_t *swt(heap_t *node, heap_t *parent)
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
-	int level = 0, order = 0, i;
+	int level = 0, order = 0;
 	heap_t *node;
 
 	if (!root)
