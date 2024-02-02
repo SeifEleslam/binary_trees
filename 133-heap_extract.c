@@ -45,5 +45,5 @@ int heap_extract(heap_t **root)
 {
 	if (!root || !*root)
 		return (0);
-	nested_ext(*root);
+	return (nested_ext(*root));
 }
