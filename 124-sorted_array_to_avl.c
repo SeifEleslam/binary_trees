@@ -14,7 +14,7 @@ void insert(avl_t *tree, int *array, size_t size, int is_left)
 	avl_t *root;
 
 	if (size <= 0)
-		return (NULL);
+		return;
 	nested_size = size / 2 + (size % 2 == 0 ? -1 : 0);
 	if (is_left)
 		tree->left = binary_tree_node(tree, array[nested_size]),
