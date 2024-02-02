@@ -8,7 +8,7 @@
  * @is_left: tree to map
  * Return: int
  */
-avl_t *insert(avl_t *tree, int *array, size_t size, int is_left)
+void insert(avl_t *tree, int *array, size_t size, int is_left)
 {
 	size_t nested_size;
 	avl_t *root;
