@@ -143,33 +143,21 @@ void print_array(const int *array, size_t size)
  */
 int main(void)
 {
-    heap_t *root;
-    heap_t *node;
+    heap_t *tree;
+    int array[] = {
+        79, 47, 68, 87, 84, 91, 21, 32, 34, 2,
+        20, 22, 98, 1, 62, 95};
+    size_t n = sizeof(array) / sizeof(array[0]);
+    int *sorted;
+    size_t sorted_size;
 
-    root = NULL;
-    node = heap_insert(&root, 98);
-    printf("Inserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 402);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 12);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 46);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 128);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 256);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 512);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
-    node = heap_insert(&root, 50);
-    printf("\nInserted: %d\n", node->n);
-    binary_tree_print(root);
+    print_array(array, n);
+    tree = array_to_heap(array, n);
+    if (!tree)
+        return (1);
+    binary_tree_print(tree);
+    sorted = heap_to_sorted_array(tree, &sorted_size);
+    print_array(sorted, sorted_size);
+    free(sorted);
     return (0);
 }
