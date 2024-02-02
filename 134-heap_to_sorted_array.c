@@ -15,7 +15,8 @@ size_t heap_capacity(const binary_tree_t *tree)
 
 /**
  * heap_to_sorted_array - check if leaf
- * @root: tree to map
+ * @heap: tree to map
+ * @size: tree to map
  * Return: int
  */
 int *heap_to_sorted_array(heap_t *heap, size_t *size)
@@ -29,5 +30,5 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size)
 	size_tracker = *size;
 	for (i = 0; i < size_tracker; i++)
 		arr[i] = heap_extract(&heap);
-	return arr;
+	return (arr);
 }
