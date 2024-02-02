@@ -25,7 +25,7 @@ int power(int base, int exponent)
 
 	for (i = 0; i < exponent; i++)
 		result *= base;
-	return result;
+	return (result);
 }
 
 /**
@@ -38,6 +38,7 @@ int power(int base, int exponent)
 heap_t *complete_insert(heap_t *tree, int order, int size)
 {
 	heap_t *dir;
+
 	if (size <= 2)
 	{
 		if (order >= 2)
@@ -55,7 +56,7 @@ heap_t *complete_insert(heap_t *tree, int order, int size)
 		dir = tree->left, size = size / 2;
 	else
 		dir = tree->right, order = order - size / 2, size = size / 2;
-	return complete_insert(dir, order, size);
+	return (complete_insert(dir, order, size));
 }
 
 /**
@@ -76,7 +77,8 @@ heap_t *swt(heap_t *node, heap_t *parent)
 
 /**
  * heap_insert - check if leaf
- * @tree: tree to map
+ * @root: tree to map
+ * @value: tree to map
  * Return: int
  */
 heap_t *heap_insert(heap_t **root, int value)
