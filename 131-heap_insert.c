@@ -21,8 +21,9 @@ size_t tree_size(const binary_tree_t *tree)
  */
 int power(int base, int exponent)
 {
-	int result = 1.0;
-	for (int i = 0; i < exponent; i++)
+	int result = 1, i;
+
+	for (i = 0; i < exponent; i++)
 		result *= base;
 	return result;
 }
