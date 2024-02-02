@@ -23,7 +23,7 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size)
 	int *arr, size_tracker, i;
 
 	*size = heap_capacity(heap);
-	arr = malloc((*size + 1) * sizeof(int));
+	arr = malloc((*size) * sizeof(int));
 	if (!arr)
 		return (NULL);
 	size_tracker = *size;
